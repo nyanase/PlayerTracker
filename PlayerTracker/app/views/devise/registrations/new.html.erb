@@ -5,7 +5,27 @@
 
   <div class="field">
     <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+
+  <div class="field">
+    <%= f.label :number %><br />
+    <%= f.number_field :number %>
+  </div>
+
+  <div class="field">
+    <%= f.check_box :coach %>
+    <%= f.label :coach, "Coach" %>
   </div>
 
   <div class="field">
