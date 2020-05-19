@@ -1,49 +1,61 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autocomplete: "email" %>
+<div class="flex items-center justify-center h-screen bg-indigo-100">
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "w-full max-w-lg bg-white shadow-md px-8 pt-4 pb-2"}) do |f| %>
+  <div class="flex flex-wrap -mx-3 mb-3">
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      <%= f.label :first_name, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"%>
+      <%= f.text_field :first_name, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"%>
+      <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
+    </div>
+    <div class="w-full md:w-1/2 px-3">
+      <%= f.label :last_name, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"%>
+      <%= f.text_field :last_name, class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"%>
+      <!-- <p class="text-red-500 text-xs italic">Please fill out this field.</p> -->
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :first_name %><br />
-    <%= f.text_field :first_name %>
+  <div class="flex flex-wrap -mx-3 mb-3">
+    <div class="w-full px-3">
+      <%= f.label :email, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"%>
+      <%= f.email_field :email, autocomplete: "email", class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" %>
+      <!-- <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p> -->
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :last_name %><br />
-    <%= f.text_field :last_name %>
+  <div class="flex flex-wrap -mx-3 mb-3">
+    <div class="w-full px-3">
+      <%= f.label :password, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
+      <%= f.password_field :password, autocomplete: "new-password", class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" %>
+      <!-- <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p> -->
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :number %><br />
-    <%= f.number_field :number %>
+  <div class="flex flex-wrap -mx-3 mb-3">
+    <div class="w-full px-3">
+      <%= f.label :password_confirmation, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" %>
+      <!-- <p class="text-gray-600 text-xs italic">Make it as long and as crazy as you'd like</p> -->
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.check_box :coach %>
-    <%= f.label :coach, "Coach" %>
+  <div class="flex flex-wrap -mx-3 mb-3">
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      <%= f.label :number, class: "block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" %>
+      <%= f.number_field :number, class: "appearance-none block w-1/2 bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" %>
+    </div>
+    <div class="flex items-center w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="md:w-full block text-gray-500 font-bold">
+        <%= f.check_box :coach, class: "mr-2 leading-tight" %>
+        <span class="text-sm">
+          Are you a coach?
+        </span>
+      </label>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+  <div class="flex flex-wrap -mx-3 mb-3">
+    <div class="w-full px-3">
+      <%= f.submit "Sign Up", class: "mt-2 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="flex flex-wrap -mx-3 mb-2">
+    <div class="w-full px-3">
+      <p class="text-gray-700 text-xs">Already have an account? Click <%= link_to('here', new_user_session_path, class: "underline text-blue-500") %> to log in.</p>
+    </div>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
+</div>
