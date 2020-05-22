@@ -1,4 +1,9 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<%= link_to 'Create Team', new_team_path, method: 'GET', class:"bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" %>
 
+<% if current_user %>
+<h1>Your Teams</h1>
+  <% @teams.each do |team| %>
+    <p><%= team.name %></p>
+  <% end %>
+<% end %>
 
