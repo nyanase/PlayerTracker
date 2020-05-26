@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   get 'games/show'
   get 'players/show'
-  resources :teams
+  resources :teams do 
+    resources :games
+  end
   resources :players
   resources :games
   
