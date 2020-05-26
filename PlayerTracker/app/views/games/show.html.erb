@@ -20,11 +20,12 @@
                 <td class="py-5">
                   <%= player.user.first_name + " " + player.user.last_name %>
                 </td>
+                <td>
+                  <%= link_to 'Track', game_track_path(@game, player)%>
+                </td>
               </tr>
             <% end %>
         </tbody>
     </div>
   </div>
 </div>
-
-

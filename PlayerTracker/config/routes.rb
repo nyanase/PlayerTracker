@@ -5,7 +5,9 @@ Rails.application.routes.draw do
     post '/invite', to: 'teams#invite_create'
   end
   resources :players
-  resources :games
+  resources :games do
+    get '/players/:player_id/track', to: 'tracker#track', as: 'track'
+  end
 
   
   devise_for :users
