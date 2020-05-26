@@ -1,16 +1,15 @@
 Rails.application.routes.draw do
-  get 'games/show'
-  get 'players/show'
   resources :teams do 
     resources :games
-    get '/invite', to: 'players#new', as: 'invite'
+    get '/invite', to: 'teams#invite_new'
+    post '/invite', to: 'teams#invite_create'
   end
   resources :players
   resources :games
+
   
   devise_for :users
-  get 'home/index'
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
+  get 'home/index'
   root 'home#index'
 end
