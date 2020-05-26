@@ -21,7 +21,7 @@
                   <%= player.user.first_name + " " + player.user.last_name %>
                 </td>
                 <td>
-                  <%= link_to 'Track', game_track_path(@game, player)%>
+                  <%= link_to 'Track', game_track_path(@game, player), class: "bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 text-xs border-4 text-white py-1 px-2 rounded object-right"%>
                 </td>
               </tr>
             <% end %>
