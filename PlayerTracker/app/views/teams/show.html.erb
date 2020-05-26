@@ -1,19 +1,19 @@
 <div class="flex mt-8 justify-center h-screen bg-indigo-100">
   <div class="w-full max-w-6xl">
     <div class="flex justify-left">
-      <%= link_to 'Back to Home', root_path, class:"bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-xs border-4 text-white py-1 px-2 rounded object-right" %>
+      <%= link_to 'Back to Home', root_path, class:"bg-gray-500 hover:bg-gray-700 border-gray-500 hover:border-gray-700 text-xs border-4 text-white py-1 px-2 rounded object-right" %>
     </div>
     <div class="flex justify-center">
-      <h1 class="text-lg "><%= @team.name %></h1>
+      <h1 class="text-4xl text-blue-500 font-bold"><%= @team.name %></h1>
     </div>
 
     <!-- List of Players -->
     <div class="flex w-full justify-center mt-8">
       <div class="w-full mr-8">
         <div class="flex w-full mb-4">
-          <h1 class="text-lg text-teal-500 py-1">Players</h1>
+          <h1 class="text-lg text-blue-500 py-1">Players</h1>
           <div class="flex w-full justify-end">
-            <%= link_to '+ Player', team_invite_path(@team), method: 'GET', class:"bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded object-right" %>
+            <%= link_to '+ Player', team_invite_path(@team), method: 'GET', class:"bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 text-sm border-4 text-white py-1 px-2 rounded object-right" %>
           </div>
         </div>
         <div class="bg-white shadow-md px-8 pt-6 pb-8 mb-4m">
@@ -25,7 +25,7 @@
             </thead>
             <tbody>
                 <% @team.players.each do |player| %>
-                  <tr class="border-b border-teal-500">
+                  <tr class="border-b border-blue-500">
                     <td class="py-5">
                       <%= link_to player.user.first_name + " " + player.user.last_name, player %>
                     </td>
@@ -39,9 +39,9 @@
       <!-- List of Teams -->
       <div class="w-full ml-8">  
         <div class="flex w-full mb-4">
-          <h1 class="text-lg text-teal-500 py-1">Games</h1>
+          <h1 class="text-lg text-blue-500 py-1">Games</h1>
           <div class="flex w-full justify-end">
-            <%= link_to '+ Game', new_team_game_path(@team), method: 'GET', class:"bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded object-right" %>
+            <%= link_to '+ Game', new_team_game_path(@team), method: 'GET', class:"bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 text-sm border-4 text-white py-1 px-2 rounded object-right" %>
           </div>
         </div>
         <div class="bg-white shadow-md px-8 pt-6 pb-8 mb-4m">
@@ -54,7 +54,7 @@
             </thead>
             <tbody>
                 <% @team.games.each do |game| %>
-                  <tr class="border-b border-teal-500">
+                  <tr class="border-b border-blue-500">
                     <td class="py-5">
                       <%= link_to game.opponent, game %>
                     </td>
