@@ -10,7 +10,7 @@
   </div>
   <div class="mt-2">
     <%= form.submit "Create", class: "flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" %>
-    <%= link_to "Cancel", root_path, class: "flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" %>
+    <%= link_to "Cancel", team_path(team), class: "flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" %>
   </div>
   <% if game.errors.any? %>
     <div id="error-explanation">

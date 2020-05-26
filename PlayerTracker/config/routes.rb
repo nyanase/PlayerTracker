@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'players/show'
   resources :teams do 
     resources :games
+    get '/invite', to: 'players#new', as: 'invite'
   end
   resources :players
   resources :games

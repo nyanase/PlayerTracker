@@ -1,1 +1,30 @@
+<div class="flex mt-8 justify-center h-screen bg-indigo-100">
+  <div class="w-full max-w-lg">
+    <div class="flex justify-left">
+      <%= link_to 'Back to Team', team_path(@game.team), class:"bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded object-right" %>
+    </div>
+    <div class="flex justify-center">
+      <h1 class="text-lg text-teal-500 py-1 px-2">Vs. <%= @game.opponent%>, <%= @game.date%></h1>
+    </div>
+      
+    <div class="bg-white shadow-md px-8 pt-6 pb-8 mb-4m">
+      <table class="w-full">
+        <thead>
+          <tr class="text-left">
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% @game.team.players.each do |player| %>
+              <tr class="border-b border-teal-500">
+                <td class="py-5">
+                  <%= player.user.first_name + " " + player.user.last_name %>
+                </td>
+              </tr>
+            <% end %>
+        </tbody>
+    </div>
+  </div>
+</div>
+
 
