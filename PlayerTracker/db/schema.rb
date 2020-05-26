@@ -10,7 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_18_200111) do
+ActiveRecord::Schema.define(version: 2020_05_26_005218) do
+
+  create_table "games", force: :cascade do |t|
+    t.date "date"
+    t.string "opponent"
+    t.integer "team_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["team_id"], name: "index_games_on_team_id"
+  end
+
+  create_table "players", force: :cascade do |t|
+    t.integer "number"
+    t.boolean "coach"
+    t.integer "user_id", null: false
+    t.integer "team_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["team_id"], name: "index_players_on_team_id"
+    t.index ["user_id"], name: "index_players_on_user_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,10 +48,11 @@ ActiveRecord::Schema.define(version: 2020_05_18_200111) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "first_name"
     t.string "last_name"
-    t.integer "number"
-    t.boolean "coach"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "games", "teams"
+  add_foreign_key "players", "teams"
+  add_foreign_key "players", "users"
 end

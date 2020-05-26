@@ -1,0 +1,69 @@
+<div class="flex mt-8 justify-center h-screen bg-indigo-100">
+  <div class="w-full max-w-6xl">
+    <div class="flex justify-left">
+      <%= link_to 'Back to Home', root_path, class:"bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded object-right" %>
+    </div>
+    <div class="flex justify-center">
+      <h1><%= @team.name %></h1>
+    </div>
+
+    <!-- List of Players -->
+    <div class="flex w-full justify-center mt-8">
+      <div class="w-full mr-8">
+        <div class="flex w-full">
+          <h1 class="text-lg text-teal-500 py-1">Players</h1>
+          <%= link_to 'Invite Player', team_invite_path(@team), method: 'GET', class:"bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded object-right" %>
+        </div>
+        <div class="bg-white shadow-md px-8 pt-6 pb-8 mb-4m">
+          <table class="w-full">
+            <thead>
+              <tr class="text-left">
+                <th>Name</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% @team.players.each do |player| %>
+                  <tr class="border-b border-teal-500">
+                    <td class="py-5">
+                      <%= link_to player.user.first_name + " " + player.user.last_name, player %>
+                    </td>
+                  </tr>
+                <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- List of Teams -->
+      <div class="w-full ml-8">  
+        <div class="flex w-full">
+          <h1 class="text-lg text-teal-500 py-1">Games</h1>
+          <%= link_to 'Create Game', new_team_game_path(@team), method: 'GET', class:"bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded object-right" %>
+        </div>
+        <div class="bg-white shadow-md px-8 pt-6 pb-8 mb-4m">
+          <table class="w-full">
+            <thead>
+              <tr class="text-left">
+                <th>Opponent</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% @team.games.each do |game| %>
+                  <tr class="border-b border-teal-500">
+                    <td class="py-5">
+                      <%= link_to game.opponent, game %>
+                    </td>
+                    <td class="py-5">
+                      <%= game.date%>
+                    </td>
+                  </tr>
+                <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

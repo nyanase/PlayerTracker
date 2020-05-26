@@ -1,0 +1,17 @@
+<%= form_with(url: team_invite_path, local: true, html: {class: "bg-white shadow-md  px-8 pt-6 pb-8 mb-4m"}) do |form| %>
+  <div class="flex items-center py-2 text-teal-500 hover:text-teal-800 text-lg">
+    Invite Player
+  </div>
+  <div class="flex items-center border-b border-b-2 border-teal-500 py-2">
+    <%= form.text_field :email, placeholder: "email", class: "appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" %>
+    <%= form.submit "Invite", class: "flex-shrink-0 bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" %>
+    <%= link_to "Cancel", team_path(team), class: "flex-shrink-0 border-transparent border-4 text-teal-500 hover:text-teal-800 text-sm py-1 px-2 rounded" %>
+  </div>
+  <% if flash[:error] %>
+    <div id="error-explanation">
+      <p class="text-red-500 text-xs"><%= flash[:error] %></p>
+    </div>
+    <% flash.clear %>
+  <% end %>
+
+<% end %>
