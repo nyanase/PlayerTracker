@@ -1,2 +1,40 @@
-<h1>Teams#show</h1>
-<p>Find me in app/views/teams/show.html.erb</p>
+<div class="flex mt-8 justify-center h-screen bg-indigo-100">
+  <div class="w-full max-w-6xl">
+    <div class="flex justify-center">
+      <h1><%= @team.name %></h1>
+    </div>
+    <div class="flex w-full justify-center mt-8">
+      <div class="w-full max-w-md mx-12">
+        <h1 class="text-lg text-teal-500 py-1">Players</h1>
+        <div class="bg-white shadow-md px-8 pt-6 pb-8 mb-4m">
+          <table class="w-full">
+            <thead>
+              <tr class="text-left">
+                <th>Name</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% @team.players.each do |player| %>
+                  <tr class="border-b border-teal-500">
+                    <td class="py-5">
+                      <%= link_to player.user.first_name + " " + player.user.last_name, player %>
+                    </td>
+                  </tr>
+                <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="w-full max-w-md mx-12">  
+        <div class="flex w-full">
+          <h1 class="text-lg text-teal-500 py-1">Games</h1>
+          <%= link_to 'Create Game', new_game_path, method: 'GET', class:"bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded object-right" %>
+        </div>
+        <div class="bg-white shadow-md px-8 pt-6 pb-8 mb-4m">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

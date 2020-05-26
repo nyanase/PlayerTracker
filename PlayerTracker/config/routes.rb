@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
+  get 'games/show'
+  get 'players/show'
   resources :teams
+  resources :players
+  resources :games
   
   devise_for :users
   get 'home/index'

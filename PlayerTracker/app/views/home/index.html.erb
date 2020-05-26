@@ -1,9 +1,28 @@
-<%= link_to 'Create Team', new_team_path, method: 'GET', class:"bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" %>
-
-<% if current_user %>
-<h1>Your Teams</h1>
-  <% @teams.each do |team| %>
-    <p><%= team.name %></p>
-  <% end %>
-<% end %>
+<div class="flex mt-8 justify-center h-screen bg-indigo-100">
+  <div class="w-full max-w-lg">
+    <% if current_user %>
+      <div class="flex justify-center">
+        <%= link_to 'Create Team', new_team_path, method: 'GET', class:"bg-teal-500 hover:bg-teal-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" %>
+      </div>
+      <h1 class="text-lg text-teal-500 py-1 px-2">Your Teams</h1>
+      <div class="bg-white shadow-md px-8 pt-6 pb-8 mb-4m">
+        <table class="w-full">
+          <thead>
+            <tr class="text-left">
+              <th>Name</th>
+            </tr>
+          </thead>
+          <tbody>
+              <% @teams.each do |team| %>
+                <tr class="border-b border-teal-500">
+                  <td class="py-5">
+                    <%= link_to team.name, team, class: "hover:text-teal-700" %>
+                  </td>
+                </tr>
+              <% end %>
+          </tbody>
+      </div>
+    <% end %>
+  </div>
+</div>
 

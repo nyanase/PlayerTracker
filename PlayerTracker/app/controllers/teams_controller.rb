@@ -4,13 +4,6 @@ class TeamsController < ApplicationController
   end
 
   def create
-
-    # if !Team.exists?(team_params)
-    #   @team = Team.create(team_params)
-    # else
-    #   redirect_to new_team_path, notice: "Team already exists!"
-      
-    # end
     @team = Team.create(team_params)
 
     if @team
@@ -21,8 +14,8 @@ class TeamsController < ApplicationController
           @user = current_user
           @user.players << @player
 
-          format.html { redirect_to @team }
-          format.json { render :show, status: :created, location: @team }
+          format.html { redirect_to root_path }
+          format.json { render :show, status: :created, location: root_path }
         else
           puts "ERRORS: "
           puts @team.errors.first
@@ -34,6 +27,7 @@ class TeamsController < ApplicationController
   end
 
   def show
+    @team = Team.find(params[:id])
   end
 
   def edit
