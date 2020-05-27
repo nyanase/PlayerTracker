@@ -1,13 +1,4 @@
-<script type="text/paperscript" canvas="myCanvas">
-  var path = new Path();
-	// Give the stroke a color
-	path.strokeColor = 'black';
-	var start = new Point(0, 0);
-	// Move to start and draw a line from there
-	path.moveTo(start);
-	// Note the plus operator on Point objects.
-	// PaperScript does that for us, and much more!
-	path.lineTo(start + [ 50, 50 ]);
-</script>
-<h1>Track</h1>
+<%= javascript_pack_tag 'track'%>
+
+<h1 id="track_title">Track</h1>
 <canvas id="myCanvas" resize></canvas>
