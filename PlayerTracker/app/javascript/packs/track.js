@@ -14,7 +14,6 @@ window.onload = function() {
 	var color = 'black';
 	var radius = 10;
 	var pointFlag = false;
-	var incompleteFlag = false;
 
 	var trackerList = [];
 	var initPointList = [];
@@ -149,6 +148,7 @@ window.onload = function() {
 	function cancelPass() {
 		if (pointFlag) {
 			if (drawPoint) {
+				// remove the point
 				drawPoint.remove();
 				pointFlag = false;
 
@@ -164,6 +164,7 @@ window.onload = function() {
 					path = new Path();
 					path.add(point1);
 					path.add(point2);
+					makeTriangle(point1, point2);
 					if (trackerList.slice(-1)[0].complete) {
 						path.strokeColor = color;
 						triangle.fillColor = color;
@@ -173,20 +174,28 @@ window.onload = function() {
 						drawPoint.fillColor = 'red';
 						triangle.fillColor = 'red';
 					}
-					makeTriangle(point1, point2);
 				}
 
 			}
 		} else {
 			if (path && trackerList.length > 0) {
+				// remove the arrow
 				path.remove();
 				triangle.remove();;
 				pointFlag = true
 
 				trackerList.pop();
-				console.log("hererere");
 			}
 		}
+	}
+
+	function submitTracks() {
+		console.log(trackerList);
+		data = {'trackerArr': trackerList, 'player_id': $('#player').val(), 'game_id': $('#game').val()};
+		$.ajax({
+			url: '/create_tracks',
+			data: ''
+		})
 	}
 
 	$('button#incomplete_button').on(
@@ -200,8 +209,15 @@ window.onload = function() {
     'click',
     function() {
       cancelPass();
-    }
-  );
+    } 
+	);
+
+	$('button#submit_button').on(
+		'click',
+		function() {
+			submitTracks();
+		}
+	);
 
 }
 

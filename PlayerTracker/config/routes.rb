@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get '/players/:player_id/track', to: 'tracker#track', as: 'track'
   end
 
+  post '/create_tracks', to: 'tracker#create'
   
   devise_for :users
 
