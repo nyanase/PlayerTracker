@@ -5,6 +5,7 @@ class TrackerController < ApplicationController
   end
 
   def create
-    
+    puts "Player_id:"
+    puts params[:player_id]
   end
 end

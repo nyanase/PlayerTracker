@@ -191,10 +191,18 @@ window.onload = function() {
 
 	function submitTracks() {
 		console.log(trackerList);
-		data = {'trackerArr': trackerList, 'player_id': $('#player').val(), 'game_id': $('#game').val()};
+		var sendData = {'trackerArr': trackerList, 'player_id': $('#player').val(), 'game_id': $('#game').val()};
 		$.ajax({
 			url: '/create_tracks',
-			data: ''
+			beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
+			data: sendData,
+			type: 'POST',
+			success: function(response) {
+				console.log(response);
+			},
+			error: function(error) {
+				console.log(error);
+			}
 		})
 	}
 
