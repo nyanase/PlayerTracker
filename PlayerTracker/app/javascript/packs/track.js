@@ -197,8 +197,13 @@ window.onload = function() {
 			beforeSend: function(xhr) {xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))},
 			data: sendData,
 			type: 'POST',
+			dataType: 'json',
 			success: function(response) {
 				console.log(response);
+				if (response.success) {
+					var game_id = $('#game').val();
+					window.location.href = `/games/${game_id}`;
+				}
 			},
 			error: function(error) {
 				console.log(error);
