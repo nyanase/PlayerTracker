@@ -1,4 +1,6 @@
 class TeamsController < ApplicationController
+  before_action :set_team, only: [:show, :destroy]
+
   def new
     @team = Team.new
   end
@@ -25,7 +27,6 @@ class TeamsController < ApplicationController
   end
 
   def show
-    @team = Team.find(params[:id])
   end
 
   def edit
@@ -35,6 +36,11 @@ class TeamsController < ApplicationController
   end
 
   def destroy
+    @team.destroy
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: 'Team was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   def invite_new
@@ -68,6 +74,9 @@ class TeamsController < ApplicationController
   end
 
   private
+  def set_team
+    @team = Team.find(params[:id])
+  end
 
   def team_params
     params.require(:team).permit(:name)
