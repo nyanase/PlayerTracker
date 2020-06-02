@@ -27,7 +27,7 @@
                 <% @team.players.each do |player| %>
                   <tr class="border-b border-blue-500">
                     <td class="py-5">
-                      <%= link_to player.user.first_name + " " + player.user.last_name, player %>
+                      <%= link_to player.user.first_name + " " + player.user.last_name, team_player_path(@team, player), class: "hover:text-blue-700 font-bold" %>
                     </td>
                   </tr>
                 <% end %>
@@ -36,7 +36,7 @@
         </div>
       </div>
 
-      <!-- List of Teams -->
+      <!-- List of Games -->
       <div class="w-full ml-8">  
         <div class="flex w-full mb-4">
           <h1 class="text-lg text-blue-500 py-1">Games</h1>
@@ -56,7 +56,7 @@
                 <% @team.games.each do |game| %>
                   <tr class="border-b border-blue-500">
                     <td class="py-5">
-                      <%= link_to game.opponent, game %>
+                      <%= link_to game.opponent, game, class: "hover:text-blue-700 font-bold" %>
                     </td>
                     <td class="py-5">
                       <%= game.date%>

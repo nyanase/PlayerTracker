@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :teams do 
     resources :games
+    resources :players
     get '/invite', to: 'teams#invite_new'
     post '/invite', to: 'teams#invite_create'
   end
