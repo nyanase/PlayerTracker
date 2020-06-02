@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :players
   resources :games do
     get '/players/:player_id/track', to: 'tracker#track', as: 'track'
+    get '/players/:player_id/show', to: 'tracker#show', as: 'track_show'
   end
 
   post '/create_tracks', to: 'tracker#create'

@@ -1,0 +1,44 @@
+<%= javascript_pack_tag 'show_track'%>
+<div data-turbolinks="false"></div>
+<%= content_tag :div, '', id: 'tracker_data', data: { source: @trackerArr } %>
+<%= content_tag :div, '', id: 'forward_data', data: { source: @forwardPasses } %>
+
+<div class="flex justify-center h-screen bg-indigo-100">
+  <div class="w-full max-w-6xl">
+    <div class="flex w-full justify-center">
+      <div class="flex w-full justify-center mt-4">
+        <div class="mt-2">
+          <%= link_to 'Back', game_path(@game), class:"mx-2 my-4 bg-gray-500 hover:bg-gray-700 border-gray-500 hover:border-gray-700 text-xs border-4 text-white py-1 px-2 rounded object-right" %>
+        </div>
+        <canvas id="myCanvas" width="450", height="580" class="bg-white border border-gray-500" ></canvas>
+      </div>
+      <div class="flex w-full justify-center mt-4">
+      <div>
+        <div class="flex justify-center">
+        <h1 class="text-4xl">
+          Statistics
+        </h1>
+        </div>
+        <div class="bg-white shadow-md px-4 py-2">
+          <table class="w-full">
+            <tbody>
+              <% @stats.each do |stat| %>
+                <tr>
+                  <td class="px-2">
+                    <%= stat[:name] %>: 
+                  </td>
+                  <td class="px-2">
+                    <%= stat[:data].length() %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
