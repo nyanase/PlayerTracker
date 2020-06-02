@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
+  before_action :set_game, only: [:show, :destroy]
+
   def show
-    @game = Game.find(params[:id])
   end
 
   def new
@@ -22,10 +23,20 @@ class GamesController < ApplicationController
     end
   end
 
+  def destroy
+    @game.destroy
+    respond_to do |format|
+      format.html { redirect_to team_setting_path(@game.team), notice: 'Player was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
 
   private 
+    def set_game
+      @game = Game.find(params[:id])
+    end
 
-  def game_params
-    params.require(:game).permit(:date, :opponent)
-  end
+    def game_params
+      params.require(:game).permit(:date, :opponent)
+    end
 end

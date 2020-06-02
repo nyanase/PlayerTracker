@@ -1,6 +1,7 @@
 class PlayersController < ApplicationController
+  before_action :set_player, only: [:show, :destroy]
+
   def show
-    @player = Player.find(params[:id])
     @team = Team.find(params[:team_id])
 
     @trackerArr = Tracker.where(player_id: params[:id])
@@ -25,9 +26,20 @@ class PlayersController < ApplicationController
   def create
   end
 
-  private
-
-  def distance(tracker)
-    d = Math.sqrt((tracker["x2"] - tracker["x1"])**2 + (tracker["y2"] - tracker["y1"])**2)
+  def destroy
+    @player.destroy
+    respond_to do |format|
+      format.html { redirect_to team_setting_path(@player.team), notice: 'Player was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
+
+  private
+    def set_player
+      @player = Player.find(params[:id])
+    end
+
+    def distance(tracker)
+      d = Math.sqrt((tracker["x2"] - tracker["x1"])**2 + (tracker["y2"] - tracker["y1"])**2)
+    end
 end

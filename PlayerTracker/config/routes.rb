@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :teams do 
+    resources :settings, only: [:show]
     resources :games
     resources :players
     get '/invite', to: 'teams#invite_new'
