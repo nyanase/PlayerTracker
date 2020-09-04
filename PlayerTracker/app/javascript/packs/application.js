@@ -10,7 +10,7 @@ require("channels")
 require("stylesheets/application.scss")
 require("jquery")
 
-require("paper")
+// require("paper")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
