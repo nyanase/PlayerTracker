@@ -1,1 +1,20 @@
-<h1>Track</h1>
+<%= javascript_pack_tag 'track'%>
+
+<%= hidden_field_tag "player", @player.id, { :id => "player" } %>
+<%= hidden_field_tag "game", @game.id, { :id => "game" } %>
+
+<div data-turbolinks="false"></div>
+
+<div class="flex w-full justify-center mt-4">
+  <div class="mt-2">
+    <%= link_to 'Back', game_path(@game), class:"mx-2 my-4 bg-gray-500 hover:bg-gray-700 border-gray-500 hover:border-gray-700 text-xs border-4 text-white py-1 px-2 rounded object-right" %>
+  </div>
+  <canvas id="myCanvas" width="450", height="580" class="bg-white border border-gray-500" ></canvas>
+  <div>
+    <div><button id="incomplete_button" class="mx-2 my-8 bg-blue-500 hover:bg-blue-700 border-blue-500 hover:border-blue-700 text-sm border-4 text-white py-1 px-2 rounded object-right">Incomplete</button></div>
+    <div><button id="cancel_pass_button" class="mx-2 my-8 bg-red-500 hover:bg-red-700 border-red-500 hover:border-red-700 text-sm border-4 text-white py-1 px-2 rounded object-right">Cancel</button></div>
+    <div class="flex object-contain items-end" ><button id="submit_button" class="mx-2 my-8 bg-gray-500 hover:bg-gray-700 border-gray-500 hover:border-gray-700 text-sm border-4 text-white py-1 px-2 rounded object-right">Submit</button></div>
+  </div>
+</div>
+
+

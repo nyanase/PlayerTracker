@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_26_005218) do
+ActiveRecord::Schema.define(version: 2020_05_30_001619) do
 
   create_table "games", force: :cascade do |t|
     t.date "date"
@@ -38,6 +38,20 @@ ActiveRecord::Schema.define(version: 2020_05_26_005218) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "trackers", force: :cascade do |t|
+    t.float "x1"
+    t.float "y1"
+    t.float "x2"
+    t.float "y2"
+    t.boolean "complete"
+    t.integer "player_id", null: false
+    t.integer "game_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["game_id"], name: "index_trackers_on_game_id"
+    t.index ["player_id"], name: "index_trackers_on_player_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -55,4 +69,6 @@ ActiveRecord::Schema.define(version: 2020_05_26_005218) do
   add_foreign_key "games", "teams"
   add_foreign_key "players", "teams"
   add_foreign_key "players", "users"
+  add_foreign_key "trackers", "games"
+  add_foreign_key "trackers", "players"
 end
